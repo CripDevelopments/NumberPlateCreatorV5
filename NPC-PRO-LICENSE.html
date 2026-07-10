@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Number Plate Creator V5 — Pro Licence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/uk-number-plate" rel="stylesheet">
+  <style>
+    :root {
+      --npc-bg: #07090f;
+      --npc-card: #141b28;
+      --npc-border: rgba(201, 162, 39, 0.28);
+      --npc-gold: #c9a227;
+      --npc-gold-light: #e8c547;
+      --npc-text: #f0f2f8;
+      --npc-muted: #9aa3b8;
+      --npc-free: #6ee7b7;
+      --npc-pro: #e8c547;
+      --npc-plate: "UK Number Plate", "DM Sans", system-ui, sans-serif;
+      --npc-font: "DM Sans", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--npc-font);
+      color: var(--npc-text);
+      background:
+        radial-gradient(ellipse 100% 80% at 20% 0%, rgba(201, 162, 39, 0.1), transparent 50%),
+        radial-gradient(ellipse 80% 60% at 90% 20%, rgba(231, 20, 255, 0.06), transparent 45%),
+        var(--npc-bg);
+      line-height: 1.55;
+    }
+    a { color: var(--npc-gold-light); }
+    a:hover { color: #fff; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 28px 20px 40px; }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .nav a {
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--npc-border);
+      background: rgba(20, 27, 40, 0.8);
+      color: var(--npc-muted);
+    }
+    .nav a:hover { border-color: var(--npc-gold); color: var(--npc-gold-light); }
+    .nav a.is-active {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.28), rgba(232, 197, 71, 0.1));
+      border-color: rgba(201, 162, 39, 0.55);
+      color: var(--npc-gold-light);
+    }
+    .hero { margin-bottom: 24px; }
+    .hero-plate {
+      font-family: var(--npc-plate);
+      font-size: clamp(2rem, 6vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+      margin: 0 0 8px;
+      background: linear-gradient(222deg, #e714ff, #e8c547, #c9a227);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      display: inline-block;
+      margin: 0 0 14px;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--npc-pro);
+      background: rgba(201, 162, 39, 0.12);
+      border: 1px solid rgba(201, 162, 39, 0.35);
+    }
+    .lead { margin: 0; font-size: 1rem; color: var(--npc-muted); }
+    .card {
+      background: linear-gradient(165deg, rgba(20, 27, 40, 0.95), rgba(12, 16, 24, 0.98));
+      border: 1px solid var(--npc-border);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--npc-gold);
+    }
+    .card p { margin: 0 0 10px; color: var(--npc-muted); font-size: 0.92rem; }
+    .card ul { margin: 0; padding-left: 1.2rem; color: var(--npc-muted); font-size: 0.92rem; }
+    .card li { margin-bottom: 6px; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 11px 18px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn--pro {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(232, 197, 71, 0.12));
+      border-color: rgba(201, 162, 39, 0.5);
+      color: var(--npc-gold-light);
+    }
+    .btn--ghost {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--npc-border);
+      color: var(--npc-text);
+    }
+    .highlight-gold {
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: rgba(201, 162, 39, 0.08);
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      color: #fde68a;
+      font-size: 0.9rem;
+    }
+    .highlight-gold a { color: var(--npc-gold-light); font-weight: 600; }
+    .steps { list-style: none; padding: 0; counter-reset: step; }
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding: 0 0 14px 36px;
+      border-left: 2px solid rgba(201, 162, 39, 0.25);
+      margin-left: 12px;
+      color: var(--npc-muted);
+      font-size: 0.92rem;
+    }
+    .steps li:last-child { padding-bottom: 0; border-left-color: transparent; }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: -13px;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--npc-card);
+      border: 2px solid var(--npc-gold);
+      color: var(--npc-gold-light);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-red { color: #fca5a5; font-weight: 600; }
+    .step-yellow { color: #fde047; font-weight: 600; }
+    .step-green { color: #86efac; font-weight: 600; }
+    .support-links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .support-links a {
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--npc-border);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #d97706;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .feature-grid span {
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      background: rgba(201, 162, 39, 0.08);
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      color: var(--npc-text);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav" aria-label="Readme variants">
+      <a href="NPC-README.html">Main · App Download</a>
+      <a href="NPC-FREE-LICENSE.html">Free Licence</a>
+      <a href="NPC-PRO-LICENSE.html" class="is-active">Pro Licence</a>
+    </nav>
+
+    <header class="hero">
+      <h1 class="hero-plate">Number Plate Creator V5</h1>
+      <p class="hero-sub">Pro Licence Key</p>
+      <p class="lead">Thank you for supporting Number Plate Creator. Your Pro licence unlocks the full toolkit. You need the Windows app installed — this product is the <strong>licence key only</strong>.</p>
+    </header>
+
+    <section class="card">
+      <h2>Your Pro purchase</h2>
+      <p>After checkout on Payhip, your Pro licence key is delivered by email. One key per purchase — keep it safe.</p>
+      <div class="highlight-gold">
+        Pro checkout: <a href="https://cripdevelopments.co.uk/b/number-plate-creator-pro">Payhip — Number Plate Creator Pro →</a>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn--pro" href="https://cripdevelopments.co.uk/b/number-plate-creator-pro">Open Payhip Pro</a>
+        <a class="btn btn--ghost" href="NPC-README.html">App download readme</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Activate in the app</h2>
+      <ol class="steps">
+        <li>Install Number Plate Creator if you have not already — see <a href="NPC-README.html">Main readme</a></li>
+        <li>Check your email for your Pro licence key from Payhip</li>
+        <li><span class="step-red">Open the app</span> → <span class="step-yellow">License</span> → <span class="step-green">paste your Pro key</span></li>
+        <li>If you had a free key active, the Pro key replaces it and unlocks Pro features immediately</li>
+      </ol>
+      <p style="margin-top: 12px;">Internet is required for licence validation. Revoked or banned keys cannot be used.</p>
+    </section>
+
+    <section class="card">
+      <h2>Pro includes everything in Free, plus</h2>
+      <div class="feature-grid">
+        <span>Unlimited exports</span>
+        <span>Specular / normal maps</span>
+        <span>Dirt &amp; burnt maps</span>
+        <span>2K – 8K resolution</span>
+        <span>Pro themes</span>
+        <span>Custom badges</span>
+        <span>Gallery uploads</span>
+        <span>Advanced plate tools</span>
+        <span>No watermarks</span>
+      </div>
+      <p style="margin-top: 14px;">Full plate creator with Standard, Custom &amp; Display modes, live preview, and built-in help are included from the free tier — Pro removes limits and adds the pro toolkit.</p>
+    </section>
+
+    <section class="card">
+      <h2>Requirements</h2>
+      <ul>
+        <li>Windows 10/11</li>
+        <li>Number Plate Creator app installed</li>
+        <li>Internet connection for activation &amp; periodic validation</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Support</h2>
+      <div class="support-links">
+        <a href="https://discord.cripdevelopments.co.uk">Discord</a>
+        <a href="https://cripdevelopments.co.uk">Website</a>
+        <a href="mailto:info@cripdevelopments.co.uk">Email</a>
+      </div>
+    </section>
+
+    <p class="footer">· Forged by Smurfy · Crip Developments</p>
+  </div>
+</body>
+</html>
