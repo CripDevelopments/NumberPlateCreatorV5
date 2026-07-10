@@ -39,7 +39,7 @@ The installer is the **app only**. You still need a key:
 | Tier | What you get | Get key |
 |------|----------------|---------|
 | **Free** | Core creator, diffuse PNG exports (limited), core themes | [Payhip Free (£0)](https://cripdevelopments.co.uk/b/number-plate-creator-free) |
-| **Pro** | Unlimited exports, Pro maps/themes, vehicle tools, gallery upload, and more | [Payhip Pro](https://cripdevelopments.co.uk/b/number-plate-creator-pro) |
+| **Pro** | Unlimited exports, Pro maps/themes, vehicle tools, gallery upload, and more | [Payhip Pro (£10 a year)](https://cripdevelopments.co.uk/b/number-plate-creator-pro) |
 
 **After you have a key:**
 
@@ -66,13 +66,7 @@ When a new **stable** release is published:
 2. Downloads the update in the background  
 3. Asks you to **Restart** to finish installing  
 
-You can also use **Settings → Check for updates** in the app.
-
-Each release typically includes:
-
-- `NumberPlateCreator-Setup-x.y.z.exe` - installer  
-- `latest.yml` - update metadata (required for auto-update)  
-- `*.blockmap` - used for efficient downloads  
+You can also use **Settings → Check for updates** in the app. 
 
 ---
 
@@ -84,16 +78,6 @@ Some releases may be marked **Pre-release** (beta).
 - Pre-releases - testing only; may be unfinished  
 
 In the app, turn on **Include beta / pre-release builds** in Settings if you want those.
-
----
-
-## What’s not in this repo
-
-- Application source code  
-- Website / VPS licence portal  
-- Creator logic, assets, or configs  
-
-Readmes, licence help, and the features guide live on the Crip Developments licence site (links above).
 
 ---
 
